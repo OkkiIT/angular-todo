@@ -1,0 +1,20 @@
+<div class="column-container">
+  <div class="column-title">{{columnTitle}}</div>
+  <div
+    [id]="columnKey"
+    cdkDropList
+    [cdkDropListData]="tasks"
+    (cdkDropListDropped)="drop($event)"
+    class="tasks-container">
+    <ng-container  *ngFor="let task of tasks ">
+      <app-task
+        cdkDrag
+        (cdkDragDropped)="console($event)"
+        [currentStatus]="task.currentStatus"
+        [id]="task.id"
+        [description]="task.description"
+        [title]="task.title"
+      ></app-task>
+    </ng-container>
+  </div>
+</div>

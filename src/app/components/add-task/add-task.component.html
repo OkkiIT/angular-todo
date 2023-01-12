@@ -1,0 +1,23 @@
+<form
+  class="form"
+  [formGroup]="form">
+  <label [for]="titleInput">Title:</label>
+  <input
+    class="input"
+    #titleInput
+    placeholder="Enter task title"
+    formControlName="title"
+    type="text">
+  <label [for]="descriptionInput">Description:</label>
+  <textarea
+    class="text-area"
+    #descriptionInput
+    placeholder="Enter task description"
+    formControlName="description">
+  </textarea>
+  <app-button
+    type="submit"
+    (btnClick)="submitAdding()"
+    iconSrc="assets/button-icons/check-mark.svg">
+  </app-button>
+</form>

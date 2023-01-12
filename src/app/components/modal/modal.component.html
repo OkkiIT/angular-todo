@@ -1,0 +1,16 @@
+<div
+  class="background"
+  (click)="closeModal()"
+></div>
+
+<div class="container">
+  <app-button
+    class="cancel-button"
+    iconSrc="assets/button-icons/cancel.svg"
+    (btnClick)="closeModal()"
+  ></app-button>
+  <header class="header">
+    <h2>{{title | titlecase}}</h2>
+  </header>
+  <ng-content></ng-content>
+</div>

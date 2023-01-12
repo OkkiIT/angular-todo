@@ -1,0 +1,71 @@
+.task-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid black;
+  padding: 5px;
+  gap: 5px;
+}
+
+.task-header {
+  border: 1px solid black;
+  display: flex;
+  gap: 5px;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.task-title {
+  flex: 1;
+  font-size: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button-container {
+  width: 60px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.change-button {
+  width: 20px;
+  height: 20px;
+}
+
+.delete-button {
+  width: 20px;
+  height: 20px;
+}
+
+.task-description {
+  font-size: 17px;
+
+  &:first-letter {
+    margin-left: 5px;
+  }
+
+  border-radius: 15px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.input {
+  font-size: 17px;
+  border: none;
+  flex: 0;
+  padding-right: 5px;
+}
+
+.text-area {
+  font-size: 17px;
+  max-height: 100px;
+  resize: none;
+  padding: 5px;
+  border-radius: 15px;
+
+  &:first-letter {
+    margin-left: 5px;
+  }
+}

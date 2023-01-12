@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ModalService} from "./services/modal.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-list-app';
+
+  constructor(public modalService:ModalService) {
+  }
+
+  openAddTaskModal(){
+    this.modalService.open()
+  }
 }

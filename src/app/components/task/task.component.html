@@ -1,0 +1,45 @@
+<div class="task-container" *ngIf="!isEditing;else editForm ">
+  <header class="task-header">
+    <ng-container *ngIf="!isEditing">
+      <div class="task-title">{{title}}</div>
+    </ng-container>
+    <div class="button-container">
+      <app-button (btnClick)="toggleEdit()" iconSrc="assets/button-icons/edit.svg"></app-button>
+      <app-button iconSrc="assets/button-icons/trash.svg"></app-button>
+    </div>
+  </header>
+  <div class="task-description">
+    {{description}}
+  </div>
+</div>
+
+<ng-template #editForm>
+  <form class="task-container" *ngIf="isEditing" [formGroup]="form">
+    <app-loader *ngIf="isLoading"></app-loader>
+    <header class="task-header">
+      <input
+        #input
+        appElemAutofocus
+        class="input"
+        type="text"
+        formControlName="title">
+      <div class="button-container">
+        <app-button
+          (btnClick)="submitEditing()"
+          iconSrc="assets/button-icons/check-mark.svg">
+        </app-button>
+        <app-button
+          (btnClick)="toggleEdit()"
+          iconSrc="assets/button-icons/cancel.svg">
+        </app-button>
+      </div>
+    </header>
+    <textarea
+      #textArea
+      class="text-area task-description"
+      type="text"
+      formControlName="description"></textarea>
+  </form>
+</ng-template>
+
+
