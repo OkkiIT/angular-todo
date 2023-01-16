@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+// test
 import {HeaderComponent} from './components/header/header.component';
 import {ContentContainerComponent} from './components/content-container/content-container.component';
 import {ColumnComponent} from './components/column/column.component';
