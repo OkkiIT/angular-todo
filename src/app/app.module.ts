@@ -20,7 +20,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { ModalComponent } from './components/modal/modal.component';
-
+//test
 @NgModule({
   declarations: [
     AppComponent,
