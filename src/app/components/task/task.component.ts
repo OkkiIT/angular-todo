@@ -1,17 +1,14 @@
 import {
-  AfterViewChecked,
-  AfterViewInit,
   Component,
-  DoCheck,
   ElementRef,
   Input,
-  OnChanges, OnInit,
-  SimpleChanges,
+   OnInit,
   ViewChild
 } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Task} from "../../models/tasks";
 import {ColumnsType} from "../../models/columns";
+import {TasksService} from "../../services/tasks.service";
 
 @Component({
   selector: 'app-task',
@@ -35,6 +32,9 @@ export class TaskComponent implements OnInit {
     description: new FormControl<string>('')
   })
 
+  constructor(public tasksService:TasksService) {
+  }
+
   ngOnInit(): void {
     this.form.controls.title.setValue(this.title)
     this.form.controls.description.setValue(this.description)
@@ -42,6 +42,10 @@ export class TaskComponent implements OnInit {
 
   toggleEdit() {
     this.isEditing = !this.isEditing
+  }
+
+  deleteTask(){
+    this.tasksService.deleteTask(this.id)
   }
 
   submitEditing() {
@@ -58,8 +62,7 @@ export class TaskComponent implements OnInit {
 
     setTimeout(() => {
       this.isLoading = false
-      this.description = editedTask.description
-      this.title = editedTask.title
+      this.tasksService.editTask(editedTask)
     }, 1000)
   }
 

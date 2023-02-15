@@ -9,13 +9,13 @@ import {ModalService} from "../../services/modal.service";
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss']
 })
-export class AddTaskComponent implements OnInit{
+export class AddTaskComponent implements OnInit {
   form = new FormGroup({
     title: new FormControl(''),
     description: new FormControl('')
   })
 
-  constructor(private tasksService:TasksService,public modalService:ModalService) {
+  constructor(private tasksService: TasksService, public modalService: ModalService) {
   }
 
   submitAdding() {
@@ -25,18 +25,27 @@ export class AddTaskComponent implements OnInit{
     const newTask: Task = {
       title,
       description,
-      id: 'hi',
+      id: this.generateRandomId(),
       currentStatus: 'todo'
     }
     this.tasksService.addNewTask(newTask)
     this.closeModal()
   }
 
-  closeModal(){
+  closeModal() {
     this.modalService.close()
   }
 
   ngOnInit(): void {
-    console.log(this.tasksService.tasks)
+  }
+
+  private generateRandomId() {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < 10; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
 }

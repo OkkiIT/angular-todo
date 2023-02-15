@@ -23,9 +23,21 @@ export class ColumnComponent implements OnInit {
 
   drop(event: CdkDragDrop<Task[], any>) {
     if (event.previousContainer === event.container) {
+      const {id:firstId} = event.previousContainer.data[event.previousIndex]
+      const {id:secondId} = event.previousContainer.data[event.currentIndex]
+      const firstPos = this.tasksService.tasks.findIndex(item=>item.id===firstId)
+      const secondPos = this.tasksService.tasks.findIndex(item=>item.id===secondId)
+      moveItemInArray(this.tasksService.tasks,firstPos,secondPos)
       moveItemInArray(this.tasks, event.previousIndex, event.currentIndex)
     } else {
       const {id} = event.previousContainer.data[event.previousIndex]
+      const {id:firstId} = event.previousContainer.data[event.previousIndex]
+      const firstElemPos= this.tasksService.tasks.findIndex(item=>item.id===firstId)
+      if(!!event.container.data[event.currentIndex-1]){
+        const {id:secondId} = event.container.data[event.currentIndex-1]
+        const secondElemPos=this.tasksService.tasks.findIndex(item=>item.id===secondId)
+        moveItemInArray(this.tasksService.tasks,firstElemPos,secondElemPos)
+      }
       this.tasksService.changeTaskColumn(id,this.columnKey)
       transferArrayItem(
         event.previousContainer.data,
@@ -37,7 +49,6 @@ export class ColumnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.tasks)
   }
   console(e:any){
     console.log(e)

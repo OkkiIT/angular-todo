@@ -15,7 +15,6 @@ export class MessageService {
   }
 
   getMessage() {
-    console.log(this.tasks,'TASKS')
     return this.message;
   }
 }

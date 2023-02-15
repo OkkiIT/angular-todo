@@ -5,7 +5,7 @@
     </ng-container>
     <div class="button-container">
       <app-button (btnClick)="toggleEdit()" iconSrc="assets/button-icons/edit.svg"></app-button>
-      <app-button iconSrc="assets/button-icons/trash.svg"></app-button>
+      <app-button (btnClick)="deleteTask()" iconSrc="assets/button-icons/trash.svg"></app-button>
     </div>
   </header>
   <div class="task-description">

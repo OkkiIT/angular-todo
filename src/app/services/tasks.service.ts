@@ -23,11 +23,20 @@ export class TasksService {
   }
 
   changeTaskColumn(currentTaskId: string, newColumnId: ColumnsType) {
-    console.log(this.tasks,'before')
     const task = this.tasks.find(item => item.id === currentTaskId)!
     const taskIndex = this.tasks.findIndex(item => item.id === currentTaskId)!
     task.currentStatus = newColumnId
     this.tasks[taskIndex] = task
-    console.log(this.tasks,'after')
+  }
+
+  deleteTask(taskId: string) {
+    this.tasks = this.tasks.filter(item => item.id !== taskId)
+  }
+
+  editTask(task:Task){
+    const taskIndex=this.tasks.findIndex(item=>item.id===task.id)
+    const arr = [...this.tasks]
+    arr[taskIndex] = task
+    this.tasks = arr
   }
 }
